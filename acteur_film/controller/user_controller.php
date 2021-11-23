@@ -15,7 +15,7 @@
         }
 
         /* ---------------------- SET ---------------------- */
-        public function setid($id){
+        public function setid_user($id_user){
             $this->id = $id;
         }
 
@@ -33,8 +33,8 @@
 
 
         /* ---------------------- GET ---------------------- */
-        public function getid(){
-            return $this->id;
+        public function getid_user(){
+            return $this->id_user;
         }
 
         public function gettype(){
