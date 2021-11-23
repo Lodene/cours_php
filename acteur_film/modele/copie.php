@@ -6,6 +6,7 @@
 
     include("./controller/user_controller.php");
 
+    $Mmanager = new manager();
     $Mfilm = new film();
     $Macteur = new acteur();
     $Muser = new user();
