@@ -1,9 +1,9 @@
 <?php 
-    include("copie/copie.php");   
+    include("modele/copie.php");   
 
         try{        
-            $query = $db->acteur_casting();
-            $toutquery = $db->detailfilm($_GET['id']);
+            $query = $acteur->acteur_casting();
+            $toutquery = $film->detailfilm($_GET['id']);
 
             foreach ($toutquery->fetchAll() as $tf) {
                 $a = 0;

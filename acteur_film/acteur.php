@@ -1,15 +1,13 @@
 <?php 
-    include("copie/copie.php");
-
-try{
-    ?>
+    include("modele/copie.php");
+?>
     <a href="ajoutacteur.php">Ajouter un acteur</a> </p> 
     <a href="accueil.php">Revenir a la page d'accueil</a> <br /> <br />
-    <?php
-    $query = $db->film_casting();
+<?php
+    $query = $film->film_casting();
     $br = $query->fetchAll();
 
-    $toutquery = $db->acteur();
+    $toutquery = $acteur->acteur();
     $br2 = $toutquery->fetchAll();
 
     foreach ($br2 as $tf) {
@@ -30,8 +28,4 @@ try{
         }
         echo "<br>";
     }    
-} catch (Exception $e){
-    echo "coup dur";
-    exit ('Erreur : '.$e->getMessage());
-    }
 ?>

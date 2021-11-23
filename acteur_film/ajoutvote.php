@@ -1,11 +1,7 @@
 <?php
-    include("copie/copie.php");
-
-	$idfilm = $_GET['id'];
-
-	
+    include("modele/copie.php");
    
-    $insert = $db->ajout_vote($idfilm);
+    $insert = $film->ajout_vote($_GET['id']);
 
-    header("location: detailfilm.php?id=". $idfilm);
+    header("location: detailfilm.php?id=". $_GET['id']);
 ?>

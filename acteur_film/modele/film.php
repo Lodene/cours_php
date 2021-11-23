@@ -38,5 +38,17 @@
 			$query -> execute();
 			return $query;
 		}
+
+		public function ajout_vote($idfilm){
+			$query = $this->bdd->prepare("SELECT * FROM film WHERE id=:id");
+    		$query -> execute(array(':id' => $idfilm));
+
+    		foreach ($query->fetchAll() as $tf) {
+    			$nbvotants = $tf['nbVotants'] + 1;
+    		}
+
+		    $nbvotant = $this->bdd->prepare("UPDATE film SET nbVotants = $nbvotants WHERE id=:id");
+		    $nbvotant -> execute(array(':id' => $idfilm));
+		}
     }
 ?> 

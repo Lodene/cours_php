@@ -18,11 +18,13 @@
         }   
 
         $query = $acteur->acteur_casting();
-        $br = $query->fetchAll();
-
+        
         $toutquery = $film->film();
-        $br2 = $toutquery->fetchAll();
+        
+        //$appelle = $film->listeacteurfilm($query, $toutquery);   
 
+        $br = $query->fetchAll();
+        $br2 = $toutquery->fetchAll();
         foreach ($br2 as $tf) {
             $a = 0;
             ?>
@@ -46,7 +48,7 @@
                 echo "Pas d'acteur <br>";
             }
             echo "<br>";
-        }    
+        } 
     ?>
 
 </body>
