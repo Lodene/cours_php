@@ -18,7 +18,7 @@
 
     <?php
     if (isset($_GET['nom']) && !empty($_GET['annee']) && !empty($_GET['score']) && !empty($_GET['nbvotants'])) {
-        $insert = $film->ajout_film($_GET['nom'], $_GET['annee'], $_GET['score'], $_GET['nbvotants']);
+        $insert = $Mfilm->ajout_film($_GET['nom'], $_GET['annee'], $_GET['score'], $_GET['nbvotants']);
         if ($insert == true) {
             echo "Le film à été ajouté . <br />";
         } else {

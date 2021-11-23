@@ -18,7 +18,7 @@
     <a href="register.php">se créer un compte</a>
     <?php 
     if (!empty($_POST['mdp']) AND isset($_POST['pseudo'])){
-        $test = $user->seconnecter($_POST['pseudo'], $_POST["mdp"]);
+        $test = $Muser->seconnecter($_POST['pseudo'], $_POST["mdp"]);
         echo $test;
         if ($test != false){
             header('location: accueil.php');

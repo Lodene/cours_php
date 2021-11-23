@@ -17,9 +17,9 @@
             echo "<a href='accueil.php'>Revenir a la page d'accueil</a> <br /> <br />";
         }   
 
-        $query = $acteur->acteur_casting();
+        $query = $Macteur->acteur_casting();
         
-        $toutquery = $film->film();
+        $toutquery = $Mfilm->film();
         
         //$appelle = $film->listeacteurfilm($query, $toutquery);   
 

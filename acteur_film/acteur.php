@@ -4,10 +4,10 @@
     <a href="ajoutacteur.php">Ajouter un acteur</a> </p> 
     <a href="accueil.php">Revenir a la page d'accueil</a> <br /> <br />
 <?php
-    $query = $film->film_casting();
+    $query = $Mfilm->film_casting();
     $br = $query->fetchAll();
 
-    $toutquery = $acteur->acteur();
+    $toutquery = $Macteur->acteur();
     $br2 = $toutquery->fetchAll();
 
     foreach ($br2 as $tf) {

@@ -24,11 +24,16 @@
 				$count = $queryun->fetchALL();
 				$nb = count($count);
 				if ($nb == 0){
-					$querydeux = $this->bdd->prepare("INSERT into `utilisateur` (pseudo, mdp) VALUES (:pseudo, :mdp)");
-					$testdeux = $querydeux ->execute(array(':pseudo' => $pseudo, ':mdp' => hash('sha256', $mdp))); 
-					header("location: login.php");
+					$verif = $this->verif_mdp($mdp);
+					if ($verif == true){
+						$querydeux = $this->bdd->prepare("INSERT into `utilisateur` (pseudo, mdp) VALUES (:pseudo, :mdp)");
+						$testdeux = $querydeux ->execute(array(':pseudo' => $pseudo, ':mdp' => hash('sha256', $mdp))); 
+						header("location: login.php");
+					} else {
+						return 0;
+					}
 				} else {
-					return false;
+					return 1;
 				}
 			}
 		}
@@ -57,6 +62,17 @@
                         break;
                 }
 				
+			}
+		}
+
+		public function verif_mdp($mdp){
+			$majuscule = preg_match('@[A-Z]@', $mdp);
+			$minuscule = preg_match('@[a-z]@', $mdp);
+			$chiffre = preg_match('@[0-9]@', $mdp);
+			if ($majuscule == false OR $minuscule == false or $chiffre == false){
+				return false;
+			} else {
+				return true;
 			}
 		}
 		

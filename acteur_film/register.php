@@ -17,7 +17,12 @@
     <a href="login.php">Se connecter</a>
     <?php 
         if (!empty($_POST['mdp']) AND isset($_POST['pseudo'])){
-            $test = $user->creercompte($_POST['pseudo'], $_POST["mdp"]);
+            $test = $Muser->creercompte($_POST['pseudo'], $_POST["mdp"]);
+            if ($test == 0){
+                echo "le mdp doit contenir au minimum 1 chiffre, 1 majuscule et 1 minuscule";
+            } elseif ($test == 1) {
+                echo "le pseudo est déjà utilisé";
+            }
         }  
     ?>
 </body>
