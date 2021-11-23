@@ -1,9 +1,5 @@
 <?php
-    class user {
-
-		public function __construct($db){
-			$db = $this->$db;
-		}
+    class user extends manager {
 		
         public function seconnecter($pseudo, $mdp){
 			echo $pseudo . $mdp;

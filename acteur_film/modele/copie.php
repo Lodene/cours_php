@@ -4,8 +4,8 @@
     include("film.php");
     include("user.php");
     $db = new manager();
-    $film = new film($db);
-    $acteur = new acteur($db);
-    $user = new user($db);
+    $film = new film();
+    $acteur = new acteur();
+    $user = new user();
     session_start();
 ?>

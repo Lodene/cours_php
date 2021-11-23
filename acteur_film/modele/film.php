@@ -1,5 +1,5 @@
 <?php
-    class film {
+    class film extends manager{
 
         
         
