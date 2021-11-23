@@ -1,5 +1,5 @@
 <?php
-    include("copie/copie.php");
+    include("modele/copie.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,53 +10,44 @@
 <body>
     <?php 
         if ($_SESSION["type"] == 'admin'){
-        ?>
-        <a href="accueil.php">Revenir a la page d'accueil</a> <br />
-        <p><a href="ajoutfilm.php">Ajouter un film</a> 
-        </br></br></br>
-        <?php
+            echo "<a href='accueil.php'>Revenir a la page d'accueil</a> <br />";
+            echo "<p><a href='ajoutfilm.php'>Ajouter un film</a>  </br></br></br>";
+           
         } else {
-        ?>
-        <a href="accueil.php">Revenir a la page d'accueil</a> <br /> <br />
-        <?php
+            echo "<a href='accueil.php'>Revenir a la page d'accueil</a> <br /> <br />";
         }   
 
-        try{
-            $query = $db->acteur_casting();
-            $br = $query->fetchAll();
+        $query = $acteur->acteur_casting();
+        $br = $query->fetchAll();
 
-            $toutquery = $db->film();
-            $br2 = $toutquery->fetchAll();
+        $toutquery = $film->film();
+        $br2 = $toutquery->fetchAll();
 
-            foreach ($br2 as $tf) {
-                $a = 0;
-                ?>
-                    <a href="detailfilm.php?id=<?php echo $tf['id']; ?>">
-                    <?php echo $tf['nom_film']."<br>"; ?>
-                    </a>
-                <?php
-                foreach($br as $f){
-                    if($tf['id'] == $f['film_id']){
-                        $a = $a + 1;
-                        if($a > 0){
-                            ?> <strong> <?php
-                            echo $f['nom_acteur'];
-                            echo $f['prenom_acteur']."<br>";
-                            ?> </strong> <?php
-                        } 
-                    }
+        foreach ($br2 as $tf) {
+            $a = 0;
+            ?>
+                <a href="detailfilm.php?id=<?php echo $tf['id']; ?>">
+                <?php echo $tf['nom_film']."<br>"; ?>
+                </a>
+            <?php
+            foreach($br as $f){
+                if($tf['id'] == $f['film_id']){
+                    $a = $a + 1;
+                    if($a > 0){
+                        ?> <strong> <?php
+                        echo $f['nom_acteur'];
+                        echo $f['prenom_acteur']."<br>";
+                        ?> </strong> <?php
+                    } 
                 }
-               
-                if($a == 0){
-                    echo "Pas d'acteur <br>";
-                }
-                echo "<br>";
-            }    
-        } catch (Exception $e){
-            echo "coup dur";
-            exit ('Erreur : '.$e->getMessage());
             }
-        ?>
+            
+            if($a == 0){
+                echo "Pas d'acteur <br>";
+            }
+            echo "<br>";
+        }    
+    ?>
 
 </body>
 </html>
