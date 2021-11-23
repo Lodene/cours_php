@@ -1,9 +1,8 @@
 <?php
     class user {
 
-		
-		public function __construct($user){
-			$user = $this->$user;
+		public function __construct($db){
+			$db = $this->$db;
 		}
 		
         public function seconnecter($pseudo, $mdp){
