@@ -1,7 +1,6 @@
 <?php
-    class user_controller {
+    class acteur_controller {
 
-        //acteur
         protected $id_acteur;
         protected $nom_acteur;
         protected $prenom_acteur;
