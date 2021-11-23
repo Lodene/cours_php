@@ -11,7 +11,7 @@
 <body>
 	<main>
 		<?php
-			 $test = $db->co_deco("1");
+			 $test = $user->co_deco("1");
 			 echo $test;
 		?>
 		<h1> Que voulez-vous faire ? </h1>

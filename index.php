@@ -1,7 +1,3 @@
-<?php
-	include("modele/copie.php");
-?>
-
 <!DOCTYPE html>
 <html>
 <head>

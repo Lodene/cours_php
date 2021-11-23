@@ -1,5 +1,10 @@
 <?php
     class control_user {
+
+        function __construct($db){
+			$db = $this->$db;
+		}
+
         public function co_deco($todo){
 			if (isset($_SESSION['pseudo'])){
                 switch ($todo){
