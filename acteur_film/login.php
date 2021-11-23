@@ -17,8 +17,15 @@
     </form>
     <a href="register.php">se créer un compte</a>
     <?php 
-    $back_end = $db->se_co();
-        
+    if (!empty($_POST['mdp']) AND isset($_POST['pseudo'])){
+        $test = $user->seconnecter($_POST['pseudo'], $_POST["mdp"]);
+        echo $test;
+        if ($test != false){
+            header('location: accueil.php');
+        } else {
+            echo "error";
+        }
+    }
     ?>
 </body>
 </html>

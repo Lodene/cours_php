@@ -2,14 +2,34 @@
     class user extends manager {
 		
         public function seconnecter($pseudo, $mdp){
-			echo $pseudo . $mdp;
 			if (!empty($pseudo) and !empty($mdp)){
 
 				$query = $this->bdd->prepare("SELECT * FROM `utilisateur` WHERE pseudo = :pseudo AND mdp = :mdp");
             	$salut = $query->execute(array(':pseudo' => $pseudo, ':mdp' => hash('sha256', $mdp)));
-            	return $query;
+
+				foreach ($query->fetchAll() as $tf) {
+					$_SESSION['pseudo'] = $tf['pseudo'];
+					$_SESSION['type'] = $tf['type'];
+				}
+            	return true;
 			} else {
-				echo "aled";
+				return false;
+			}
+		}
+
+		public function creercompte($pseudo, $mdp){
+			if (!empty($pseudo) and !empty($mdp)){
+				$queryun = $this->bdd->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
+				$test = $queryun->execute(array(':pseudo' => $pseudo));     
+				$count = $queryun->fetchALL();
+				$nb = count($count);
+				if ($nb == 0){
+					$querydeux = $this->bdd->prepare("INSERT into `utilisateur` (pseudo, mdp) VALUES (:pseudo, :mdp)");
+					$testdeux = $querydeux ->execute(array(':pseudo' => $pseudo, ':mdp' => hash('sha256', $mdp))); 
+					header("location: login.php");
+				} else {
+					return false;
+				}
 			}
 		}
 
