@@ -20,7 +20,7 @@
 		public function creercompte($pseudo, $mdp){
 			if (!empty($pseudo) and !empty($mdp)){
 				$queryun = $this->bdd->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
-				$test = $queryun->execute(array(':pseudo' => $pseudo));     
+				$test = $queryun->execute(array(':pseudo' => $pseudo));
 				$count = $queryun->fetchALL();
 				$nb = count($count);
 				if ($nb == 0){
