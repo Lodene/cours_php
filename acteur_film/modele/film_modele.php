@@ -1,8 +1,6 @@
 <?php
     class film extends manager{
 
-        
-        
         public function ajout_film($nom_film, $annee, $score, $nbVotants){
 
 			$query = $this->bdd->prepare('SELECT * FROM film f WHERE nom_film = :nom_film AND annee = :annee AND score = :score AND nbVotants = :nbVotants');
