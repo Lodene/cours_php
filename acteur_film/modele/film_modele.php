@@ -1,4 +1,5 @@
 <?php
+	require('../controller/film_controler.php');
     class film extends manager{
 
         public function ajout_film($nom_film, $annee, $score, $nbVotants){
@@ -9,6 +10,7 @@
             $count = $query->rowCount();
 
             if($count == 0){
+				$newfilm = new Cfilm($nom_film, $annee, $score, $nbVotants);
                 $query = $this->bdd->prepare("INSERT into `film` (nom_film, annee, score, nbvotants)
                                 VALUES (:nom_film, :annee, :score, :nbvotants)");
                 $query->execute(array(':nom_film' => $nom_film, ':annee' => $annee, ':score'=> $score, ':nbvotants' => $nbVotants));
