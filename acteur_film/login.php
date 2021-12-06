@@ -18,12 +18,13 @@
     <a href="register.php">se créer un compte</a>
     <?php 
     if (!empty($_POST['mdp']) AND isset($_POST['pseudo'])){
-        $test = $Muser->seconnecter($_POST['pseudo'], $_POST["mdp"]);
+        $objet = new userC('user', $_POST['pseudo'], $_POST["mdp"]);
+        $test = $Muser->seconnecter($objet);
         echo $test;
         if ($test != false){
             header('location: accueil.php');
         } else {
-            echo "error";
+            echo "error : il manque des données";
         }
     }
     ?>

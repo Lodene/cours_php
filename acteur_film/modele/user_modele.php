@@ -2,34 +2,36 @@
 	require_once('./controler/user_controler.php');
     class user extends manager {
 		
-        public function seconnecter($pseudo, $mdp){
-			if (!empty($pseudo) and !empty($mdp)){
-
+        public function seconnecter($objet){
+			if (!empty($objet->getpseudo()) and !empty($objet->getmdp())){
 				$query = $this->bdd->prepare("SELECT * FROM `utilisateur` WHERE pseudo = :pseudo AND mdp = :mdp");
-            	$salut = $query->execute(array(':pseudo' => $pseudo, ':mdp' => hash('sha256', $mdp)));
-
-				foreach ($query->fetchAll() as $tf) {
-					$_SESSION['pseudo'] = $tf['pseudo'];
-					$_SESSION['type'] = $tf['type'];
-				}
+            	$salut = $query->execute(array(':pseudo' => $objet->getpseudo(), ':mdp' => hash('sha256', $objet->getmdp())));
+				$_SESSION['pseudo'] = $objet->getpseudo();
+				$_SESSION['type'] = $objet->gettype();
             	return true;
 			} else {
 				return false;
 			}
 		}
 
-		public function creercompte($pseudo, $mdp){
-			if (!empty($pseudo) and !empty($mdp)){
+		public function creercompte($objet){
+			var_dump($objet);
+			echo "<br>";
+			var_dump($objet->getmdp());
+			echo "<br>";
+			var_dump($objet->getpseudo());
+			echo "<br>";
+			if (!empty($objet->getpseudo()) and !empty($objet->getmdp())){
 				$queryun = $this->bdd->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
-				$test = $queryun->execute(array(':pseudo' => $pseudo));
+				$test = $queryun->execute(array(':pseudo' => $objet->getpseudo()));
 				$count = $queryun->fetchALL();
 				$nb = count($count);
 				if ($nb == 0){
-					$verif = $this->verif_mdp($mdp);
+					var_dump($objet->getmdp());
+					$verif = $this->verif_mdp($objet->getmdp());
 					if ($verif == true){
-						$objet = 
 						$querydeux = $this->bdd->prepare("INSERT into `utilisateur` (pseudo, mdp) VALUES (:pseudo, :mdp)");
-						$testdeux = $querydeux ->execute(array(':pseudo' => $pseudo, ':mdp' => hash('sha256', $mdp))); 
+						$testdeux = $querydeux ->execute(array(':pseudo' => $objet->getpseudo(), ':mdp' => hash('sha256', $objet->getmdp()))); 
 						header("location: login.php");
 					} else {
 						return 0;

@@ -10,14 +10,16 @@
 <body>
     <h1> Créer un compte </h1>
     <form action="" method="post">
-            Pseudo :  <input type="text" name="pseudo" />
-            Mot de passe :  <input type="password" name="mdp" />
+            Pseudo :  <input type="text" name="pseudo" required/>
+            Mot de passe :  <input type="password" name="mdp" required/>
             <input type="submit" name="submit" />   
     </form>
     <a href="login.php">Se connecter</a>
     <?php 
         if (!empty($_POST['mdp']) AND isset($_POST['pseudo'])){
-            $test = $Muser->creercompte($_POST['pseudo'], $_POST["mdp"]);
+            echo $_POST["mdp"] . "<br><br>";
+            $objet = new userC('user', $_POST['pseudo'], $_POST["mdp"]);
+            $test = $Muser->creercompte($objet);
             if ($test == 0){
                 echo "le mdp doit contenir au minimum 1 chiffre, 1 majuscule et 1 minuscule";
             } elseif ($test == 1) {

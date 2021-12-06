@@ -2,23 +2,17 @@
     class userC {
 
         //utilisateur
-		protected $id_user;
 		protected $type;
 		protected $pseudo;
 		protected $mdp;
 
-        public function __construct($id_user = NULL, $type = '', $pseudo = '', $mdp = '') {
-            $this->id_user = NULL;
+        public function __construct($type = '', $pseudo = '', $mdp = '') {
             $this->type = $type;
             $this->pseudo = $pseudo;
             $this->mdp = $mdp;
         }
 
         /* ---------------------- SET ---------------------- */
-        public function setid_user($id_user){
-            $this->id = $id;
-        }
-
         public function settype($type){
             $this->type = $type;
         }
@@ -33,10 +27,6 @@
 
 
         /* ---------------------- GET ---------------------- */
-        public function getid_user(){
-            return $this->id_user;
-        }
-
         public function gettype(){
             return $this->type;
         }
