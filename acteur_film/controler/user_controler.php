@@ -1,5 +1,5 @@
 <?php
-    class user_controller {
+    class userC {
 
         //utilisateur
 		protected $id_user;

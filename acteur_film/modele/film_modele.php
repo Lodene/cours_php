@@ -1,19 +1,20 @@
 <?php
-	require('../controller/film_controler.php');
+	include("./controler/film_controler.php");
     class film extends manager{
 
-        public function ajout_film($nom_film, $annee, $score, $nbVotants){
+        public function ajout_film($newfilm){
 
 			$query = $this->bdd->prepare('SELECT * FROM film f WHERE nom_film = :nom_film AND annee = :annee AND score = :score AND nbVotants = :nbVotants');
-            $query->execute(array('nom_film' => $nom_film, 'annee' => $annee, 'score'=> $score, 'nbVotants' => $nbVotants));
+            $query->execute(array('nom_film' => $newfilm->getNom_film(), 'annee' => $newfilm->getAnnee(), 'score'=> $newfilm->getScore(), 'nbVotants' => $newfilm->getNbVotants()));
 
             $count = $query->rowCount();
 
             if($count == 0){
-				$newfilm = new Cfilm($nom_film, $annee, $score, $nbVotants);
-                $query = $this->bdd->prepare("INSERT into `film` (nom_film, annee, score, nbvotants)
-                                VALUES (:nom_film, :annee, :score, :nbvotants)");
-                $query->execute(array(':nom_film' => $nom_film, ':annee' => $annee, ':score'=> $score, ':nbvotants' => $nbVotants));
+				var_dump($newfilm);
+                $query = $this->bdd->prepare("INSERT into film (nom_film, annee, score, nbvotants)
+                                VALUES (:nom_film, :annee, :score, :nbVotants)");
+                $query->execute(array(':nom_film' => $newfilm->getNom_film(), ':annee' => $newfilm->getAnnee(), ':score'=> $newfilm->getScore(), ':nbVotants' => $newfilm->getNbVotants()));
+
                 return true;
             } else {
             	return false;
@@ -23,7 +24,11 @@
         public function detailfilm($idfilm){
 			$query2 = $this->bdd->prepare("SELECT * FROM film WHERE id=?");
 			$query2 -> execute(array($idfilm));
-			return $query2;
+			$res = $query2->fetchall();
+			var_dump($res);
+			$objet = new FilmC(null, $res['nom_film'], $res['annee'], $res['score'], $res['nbVotants']);
+			var_dump($objet);
+			return $objet;
 		}
 
         public function film(){

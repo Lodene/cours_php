@@ -1,5 +1,5 @@
 <?php
-    class acteur_controller {
+    class acteurC {
 
         protected $id_acteur;
         protected $nom_acteur;

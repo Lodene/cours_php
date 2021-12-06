@@ -16,12 +16,9 @@
         foreach($query->fetchAll() as $f){
             if($tf['id'] == $f['film_id']){
                 $a = $a + 1;
-
                 if($a > 0){
-                    
                     echo $f['nom_acteur'];
                     echo $f['prenom_acteur'] . ", " ;
-                    
                 } 
             }
         }
