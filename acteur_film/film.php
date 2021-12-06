@@ -20,7 +20,7 @@
     }
           
 
-        $query = $Macteur->acteur_casting();
+        $query = $Macteur->casting();
         
         $toutquery = $Mfilm->film();
         

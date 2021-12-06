@@ -1,13 +1,11 @@
 <?php
     class filmC {
-        private int $id;
         private string $nom_film;
         private int $annee;
         private int $score;
         private int $nbVotants;
 
-        public function  __construct($id = NULL, $nom_film = '', $annee = '', $score = '', $nbVotants = '') {
-            $this->id = $id;
+        public function  __construct($nom_film = '', $annee = '', $score = '', $nbVotants = '') {
             $this->nom_film = $nom_film;
             $this->annee = $annee;
             $this->score = $score;
@@ -16,10 +14,6 @@
 
         
         /* ---------------------- SET ---------------------- */
-        public function setId($id) {
-            $this->id = $id;
-        }
-
         public function setNom_film($nom_film) {
             $this->nom_film = $nom_film;
         }
@@ -38,11 +32,6 @@
 
 
         /* ---------------------- GET ---------------------- */
-
-        public function getId() {
-            return $this->id;
-        }
-
         public function getNom_film() {
             return $this->nom_film;
         }

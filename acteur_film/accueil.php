@@ -11,8 +11,13 @@
 <body>
 	<main>
 		<?php
-			 $test = $Muser->co_deco("1");
-			 echo $test;
+			if (isset($_SESSION['pseudo'])){
+				echo "Bonjour " . $_SESSION['pseudo'] . " ! Vous etes un " . $_SESSION['type'];
+				echo "<br><a href='logout.php'>Se déconnecter</a></br>";
+			} else {
+				echo "Hésite pas à te co bg";
+				echo "<br><a href='login.php'>Se connecter</a></br>";
+			}
 		?>
 		<h1> Que voulez-vous faire ? </h1>
 		<a href="film.php">voir la liste des films</a> </br>

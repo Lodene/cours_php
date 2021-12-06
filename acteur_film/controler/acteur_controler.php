@@ -1,21 +1,15 @@
 <?php
     class acteurC {
 
-        protected $id_acteur;
         protected $nom_acteur;
         protected $prenom_acteur;
 
-        public function __construct($id_acteur = NULL, $nom_acteur = '', $prenom_acteur = '') {
-            $this->id_acteur = NULL;
+        public function __construct($nom_acteur = '', $prenom_acteur = '') {
             $this->nom_acteur = $nom_acteur;
             $this->prenom_acteur = $prenom_acteur;
         }
 
         /* ---------------------- SET ---------------------- */
-        public function setid_acteur($id_acteur){
-            $this->id_acteur = $id_acteur;
-        }
-
         public function setnom_acteur($nom_acteur){
             $this->nom_acteur = $nom_acteur;
         }
@@ -26,10 +20,6 @@
 
 
         /* ---------------------- GET ---------------------- */
-        public function getid_acteur(){
-            return $this->id_acteur;
-        }
-
         public function getnom_acteur(){
             return $this->nom_acteur;
         }

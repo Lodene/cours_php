@@ -1,5 +1,5 @@
 <?php
-	include("./controler/film_controler.php");
+	require_once("./controler/film_controler.php");
     class film extends manager{
 
         public function ajout_film($newfilm){
@@ -10,7 +10,6 @@
             $count = $query->rowCount();
 
             if($count == 0){
-				var_dump($newfilm);
                 $query = $this->bdd->prepare("INSERT into film (nom_film, annee, score, nbvotants)
                                 VALUES (:nom_film, :annee, :score, :nbVotants)");
                 $query->execute(array(':nom_film' => $newfilm->getNom_film(), ':annee' => $newfilm->getAnnee(), ':score'=> $newfilm->getScore(), ':nbVotants' => $newfilm->getNbVotants()));
@@ -25,10 +24,12 @@
 			$query2 = $this->bdd->prepare("SELECT * FROM film WHERE id=?");
 			$query2 -> execute(array($idfilm));
 			$res = $query2->fetchall();
-			var_dump($res);
-			$objet = new FilmC(null, $res['nom_film'], $res['annee'], $res['score'], $res['nbVotants']);
-			var_dump($objet);
-			return $objet;
+			if (isset($res[0]['nom_film']) && isset($res[0]["annee"]) && isset($res[0]["score"]) && isset($res[0]["nbVotants"])){
+				$objet = new FilmC($res[0]["nom_film"], $res[0]['annee'], $res[0]['score'], $res[0]['nbVotants']);
+				return $objet;
+			} else {
+				return false;
+			}
 		}
 
         public function film(){
@@ -47,7 +48,7 @@
 		public function ajout_vote($idfilm){
 			$query = $this->bdd->prepare("SELECT * FROM film WHERE id=:id");
     		$query -> execute(array(':id' => $idfilm));
-
+			
     		foreach ($query->fetchAll() as $tf) {
     			$nbvotants = $tf['nbVotants'] + 1;
     		}

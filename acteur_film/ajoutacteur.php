@@ -17,7 +17,8 @@
 
     <?php
     if (isset($_GET['nom']) && !empty($_GET['prenom'])) {
-            $insert = $Macteur->ajout_acteur($_GET['nom'], $_GET['prenom']);
+            $objet = new acteurC($_GET['nom'], $_GET['prenom']);
+            $insert = $Macteur->ajout_acteur($objet);
             if ($insert == true) {
                 echo "L'acteur à été ajouté";
             }else {

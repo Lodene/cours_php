@@ -1,36 +1,28 @@
 <?php 
     include("modele/copie.php");   
       
-    $query = $Macteur->acteur_casting();
-    $toutquery = $Mfilm->detailfilm($_GET['id']);
-
-    foreach ($toutquery->fetchAll() as $tf) {
-        $a = 0;
-            $nbvotants = $tf['nbVotants'] + 1;
-            echo $tf['nom_film']."<br>"; ?>
-            <p> annee : <?php echo $tf['annee']."<br>"; ?> </p>
-            <p> score : <?php echo $tf['score']."<br>"; ?> </p>
-            <p> nombre(s) votant(s) <?php echo $tf['nbVotants']."<br>"; ?> </p>
-            <a href="ajoutvote.php?id=<?php echo $tf['id'];?>">Voter pour ce film</a>
-            <p> acteur(s) :  <?php
-        foreach($query->fetchAll() as $f){
-            if($tf['id'] == $f['film_id']){
-                $a = $a + 1;
-                if($a > 0){
-                    echo $f['nom_acteur'];
-                    echo $f['prenom_acteur'] . ", " ;
-                } 
+    $query = $Macteur->acteur_casting($_GET['id']);
+    $objet = $Mfilm->detailfilm($_GET['id']);
+    if ($objet != false) {
+        echo $objet->getNom_film() ."<br>"; ?>
+        <p> annee : <?php echo $objet->getAnnee() ."<br>"; ?> </p>
+        <p> score : <?php echo $objet->getScore() ."<br>"; ?> </p>
+        <p> nombre(s) votant(s) : <?php echo $objet->getNbVotants() ."<br>"; ?> </p>
+        <a href="ajoutvote.php?id=<?php echo $_GET['id'];?>">Voter pour ce film</a>
+        <p> acteur(s) : <br> <?php
+        if ($query != false) {
+            for ($i=0; $i <  count($query); $i++) { 
+                echo $query[$i]->getprenom_acteur() . " ";
+                echo $query[$i]->getnom_acteur() . ", <br>" ;
             }
+        } else {
+            echo "Pas d'acteur <br><br>";
         }
-
         ?> </p> <?php
-        
-        if($a == 0){
-            echo "Pas d'acteur <br>";
-        }
-        echo "<br>";
-
-    }    
+    } else {
+        echo "<br /> erreur <br />";
+    }
+      
 
 ?>
 <a href="film.php">Revenir à la page précedente</a>
