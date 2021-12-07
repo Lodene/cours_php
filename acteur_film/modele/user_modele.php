@@ -15,19 +15,12 @@
 		}
 
 		public function creercompte($objet){
-			var_dump($objet);
-			echo "<br>";
-			var_dump($objet->getmdp());
-			echo "<br>";
-			var_dump($objet->getpseudo());
-			echo "<br>";
 			if (!empty($objet->getpseudo()) and !empty($objet->getmdp())){
 				$queryun = $this->bdd->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
 				$test = $queryun->execute(array(':pseudo' => $objet->getpseudo()));
 				$count = $queryun->fetchALL();
 				$nb = count($count);
 				if ($nb == 0){
-					var_dump($objet->getmdp());
 					$verif = $this->verif_mdp($objet->getmdp());
 					if ($verif == true){
 						$querydeux = $this->bdd->prepare("INSERT into `utilisateur` (pseudo, mdp) VALUES (:pseudo, :mdp)");
