@@ -4,12 +4,14 @@
         private int $annee;
         private int $score;
         private int $nbVotants;
+        private ?int $idFilm;
 
-        public function  __construct($nom_film = '', $annee = '', $score = '', $nbVotants = '') {
+        public function  __construct($nom_film = '', $annee = '', $score = '', $nbVotants = '', $idFilm = NULL) {
             $this->nom_film = $nom_film;
             $this->annee = $annee;
             $this->score = $score;
             $this->nbVotants = $nbVotants;
+            $this->idFilm = $idFilm;
         }
 
         
@@ -30,6 +32,9 @@
             $this->nbVotants = $nbVotants + 1;
         }
 
+        public function setIdFilm($idFilm) {
+            $this->idFilm = $idFilm;
+        }
 
         /* ---------------------- GET ---------------------- */
         public function getNom_film() {
@@ -46,6 +51,10 @@
 
         public function getNbVotants() {
             return $this->nbVotants;
+        }
+
+        public function getId_Film() {
+            return $this->idFilm;
         }
     }
 ?>

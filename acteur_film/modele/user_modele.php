@@ -6,6 +6,10 @@
 			if (!empty($objet->getpseudo()) and !empty($objet->getmdp())){
 				$query = $this->bdd->prepare("SELECT * FROM `utilisateur` WHERE pseudo = :pseudo AND mdp = :mdp");
             	$salut = $query->execute(array(':pseudo' => $objet->getpseudo(), ':mdp' => hash('sha256', $objet->getmdp())));
+				$newquery = $query->fetchall();
+				if ($newquery[0]['type'] == 'admin') {
+					$objet->settype('admin');
+				}
 				$_SESSION['pseudo'] = $objet->getpseudo();
 				$_SESSION['type'] = $objet->gettype();
             	return true;
