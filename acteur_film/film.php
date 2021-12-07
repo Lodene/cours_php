@@ -10,48 +10,37 @@
 <body>
     <?php 
     if (isset($_SESSION['type'])){
-        if ($_SESSION["type"] == 'admin'){
+        if ($_SESSION['type'] == 'admin'){
             echo "<a href='accueil.php'>Revenir a la page d'accueil</a> <br />";
             echo "<p><a href='ajoutfilm.php'>Ajouter un film</a>  </br></br></br>";
            
         } else {
             echo "<a href='accueil.php'>Revenir a la page d'accueil</a> <br /> <br />";
         } 
-    }
-          
+    }        
+        $objet = $Mfilm->film();
 
-        $query = $Macteur->casting();
-        
-        $toutquery = $Mfilm->film();
-        
-        //$appelle = $film->listeacteurfilm($query, $toutquery);   
-
-        $br = $query->fetchAll();
-        $br2 = $toutquery->fetchAll();
-        foreach ($br2 as $tf) {
+        for ($i=0; $i < count($objet); $i++) {
             $a = 0;
             ?>
-                <a href="detailfilm.php?id=<?php echo $tf['id']; ?>">
-                <?php echo $tf['nom_film']."<br>"; ?>
-                </a>
-            <?php
-            foreach($br as $f){
-                if($tf['id'] == $f['film_id']){
-                    $a = $a + 1;
-                    if($a > 0){
-                        ?> <strong> <?php
-                        echo $f['nom_acteur'];
-                        echo $f['prenom_acteur']."<br>";
-                        ?> </strong> <?php
-                    } 
+                <a href="detailfilm.php?id=<?php  echo $objet[$i]->getId_Film();?>"> <?php echo $objet[$i]->getNom_film() . "<br>"?></a><?php
+                $acteurobjet = $Macteur->participer($objet[$i]->getId_Film());
+                if ($acteurobjet != false){
+                    for ($p=0; $p < count($acteurobjet); $p++) { 
+                        $a++;
+                        echo $acteurobjet[$p]->getnom_acteur();
+                        echo $acteurobjet[$p]->getprenom_acteur();
+                        echo "<br>";
+                    }
                 }
-            }
-            
-            if($a == 0){
-                echo "Pas d'acteur <br>";
-            }
-            echo "<br>";
-        } 
+                if($a == 0){
+                    echo "Pas d'acteur <br>";
+                }
+                echo "<br>";
+                
+        }
+       
+
     ?>
 
 </body>

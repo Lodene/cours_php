@@ -4,9 +4,9 @@
         private int $annee;
         private int $score;
         private int $nbVotants;
-        private ?int $idFilm;
+        private int $idFilm;
 
-        public function  __construct($nom_film = '', $annee = '', $score = '', $nbVotants = '', $idFilm = NULL) {
+        public function  __construct($nom_film = '', $annee = '', $score = '', $nbVotants = '', $idFilm = '') {
             $this->nom_film = $nom_film;
             $this->annee = $annee;
             $this->score = $score;

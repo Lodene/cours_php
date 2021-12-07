@@ -19,8 +19,24 @@
         public function casting(){
             $query = $this->bdd->prepare('SELECT * FROM acteur a
             INNER JOIN casting c ON c.acteur_id = a.id_acteur');
-              $query->execute();
-              return $query;
+            $query->execute();
+            return $query;
+        }
+
+        public function participer($idfilm){
+            
+            $query = $this->bdd->prepare('SELECT * FROM acteur a
+                INNER JOIN casting c ON c.acteur_id = a.id_acteur where film_id = :id');
+            $query->execute(array(':id' => $idfilm));
+            $tabquery = $query->fetchall();
+            if (count($tabquery) > 0){
+                for ($i=0; $i < count($tabquery); $i++) { 
+                    $objet[$i] = new acteurC($tabquery[$i]['nom_acteur'], $tabquery[$i]['prenom_acteur']);
+                }
+                return $objet; 
+            }
+            return false;
+            
         }
 
         public function acteur_casting($id){

@@ -19,7 +19,7 @@
 
     <?php
     if (isset($_GET['nom']) && !empty($_GET['annee']) && !empty($_GET['score']) && !empty($_GET['nbvotants'])) {
-        $newFilm = new filmC(null, $_GET['nom'], $_GET['annee'], $_GET['score'], $_GET['nbvotants']);
+        $newFilm = new filmC($_GET['nom'], $_GET['annee'], $_GET['score'], $_GET['nbvotants'], 0);
         $insert = $Mfilm->ajout_film($newFilm);
         if ($insert == true) {
             echo "Le film à été ajouté . <br />";
