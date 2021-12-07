@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 07 déc. 2021 à 12:55
+-- Généré le : mar. 07 déc. 2021 à 14:29
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.11
 
@@ -42,14 +42,15 @@ INSERT INTO `acteur` (`id_acteur`, `nom_acteur`, `prenom_acteur`) VALUES
 (2, 'DiCarpio', 'Leonardo'),
 (3, 'Smith', 'Will'),
 (4, 'Ferrara', 'Manuel'),
-(5, 'Antoine', 'adjamidis'),
+(5, 'Antoine', 'Adjamidis'),
 (8, 'Alan', 'Sergent'),
 (9, 'Lucas', 'leboso'),
 (10, 'test', 'test'),
 (11, 'Ludo', 'Fayolle'),
 (12, 'bourde', 'salut'),
 (13, 'Nikita', 'Beluchi'),
-(14, 'Kaitlyn', 'Michelle');
+(14, 'Kaitlyn', 'Michelle'),
+(37, 'Professeur', 'LeMeilleur');
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,9 @@ INSERT INTO `casting` (`film_id`, `acteur_id`) VALUES
 (13, 2),
 (13, 3),
 (3, 1),
-(31, 2);
+(31, 2),
+(1639, 5),
+(1639, 8);
 
 -- --------------------------------------------------------
 
@@ -91,7 +94,7 @@ CREATE TABLE `film` (
 --
 
 INSERT INTO `film` (`id`, `nom_film`, `annee`, `score`, `nbVotants`) VALUES
-(1, 'Star Wars', 1977, 8.9, 14211),
+(1, 'Star Wars', 1977, 8.9, 14212),
 (2, 'Pulp Fiction', 1994, 8.4, 11694),
 (3, 'Blade Runner', 1982, 8.6, 8678),
 (4, 'Titanic', 1997, 9.2, 8132),
@@ -124,7 +127,7 @@ INSERT INTO `film` (`id`, `nom_film`, `annee`, `score`, `nbVotants`) VALUES
 (32, 'Jurassic Park', 1993, 7.4, 4707),
 (33, 'English Patient, The', 1996, 8.1, 4689),
 (34, 'One Flew Over the Cuckoo\'s Nest', 1975, 8.5, 4545),
-(35, 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb', 1963, 8.6, 4451),
+(35, 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb', 1963, 8.6, 4452),
 (39, 'Terminator, The', 1984, 7.8, 4225),
 (48, 'True Lies', 1994, 7.3, 3601),
 (94, 'Total Recall', 1990, 7.1, 2305),
@@ -143,10 +146,7 @@ INSERT INTO `film` (`id`, `nom_film`, `annee`, `score`, `nbVotants`) VALUES
 (1339, 'Jingle All the Way', 1996, 6, 262),
 (1551, 'Raw Deal', 1986, 5, 215),
 (1622, 'Batman and Robin', 1997, 3.9, 1925),
-(1623, 'damn', 911, 69, 420),
-(1633, 'les bronzés aux soleil', 1990, 258, 987),
-(1634, 'wuwu', 789, 456, 123),
-(1635, 'uwuuuw', 987, 654, 321);
+(1639, 'UneBonneNoteSvp', 20, 20, 20);
 
 -- --------------------------------------------------------
 
@@ -169,7 +169,9 @@ INSERT INTO `utilisateur` (`id_user`, `type`, `pseudo`, `mdp`) VALUES
 (11, 'admin', 'a', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
 (12, 'user', 'b', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d'),
 (23, 'user', 'Sidem', '890523735ec725c4aaf06adbccb91ac0629572a1be4de308fd3deb1d4dfd03a2'),
-(24, 'user', 'UwUwUwU', 'e70a3b51606960373cbffa5e096e4cb3c500d34672de03937bb58ac16e9f222c');
+(24, 'user', 'UwUwUwU', 'e70a3b51606960373cbffa5e096e4cb3c500d34672de03937bb58ac16e9f222c'),
+(25, 'user', 'k', '95860bcac07cf03ca90a50e02afdfa558abd5f3cd3ec35a9cface23c10d28062'),
+(26, 'user', 'Salut', '796e93478e830d4bb336fb3ab821f47d581ee980540b4a29683a4e3634971f3c');
 
 --
 -- Index pour les tables déchargées
@@ -208,19 +210,19 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `acteur`
 --
 ALTER TABLE `acteur`
-  MODIFY `id_acteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_acteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT pour la table `film`
 --
 ALTER TABLE `film`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1636;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1640;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Contraintes pour les tables déchargées
