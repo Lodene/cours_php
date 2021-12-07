@@ -13,14 +13,15 @@
         echo '<br>';
         $filmobjet = $Mfilm->film_casting($objet[$i]->getidActeur());
         if ($filmobjet != false){
-            for ($p=0; $p < count($acteurobjet); $p++) { 
+           
+            for ($p=0; $p < count($filmobjet); $p++) { 
                 ?><strong><?php
                 echo $filmobjet[$p]->getNom_film();
                 ?></strong><?php
                 echo "<br>";
             }
         } else {
-            echo "Pas d'acteur <br>";
+            echo "Pas de film <br>";
         }
         echo "<br>";
     }

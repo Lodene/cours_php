@@ -8,6 +8,7 @@
         public function __construct($nom_acteur = '', $prenom_acteur = '', $idActeur) {
             $this->nom_acteur = $nom_acteur;
             $this->prenom_acteur = $prenom_acteur;
+            $this->idActeur = $idActeur;
         }
 
         /* ---------------------- SET ---------------------- */

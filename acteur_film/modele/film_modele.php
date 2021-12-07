@@ -45,13 +45,18 @@
 
         public function film_casting($id){
 			$query = $this->bdd->prepare('SELECT * FROM film f
-      										INNER JOIN casting c ON c.acteur_id = f.id where id_acteur = :id');
+      										INNER JOIN casting c ON c.acteur_id = f.id where acteur_id = :id');
 			$query -> execute(array(':id' => $id));
 			$tabquery = $query->fetchall();
-			for ($i=0; $i < count($tabquery); $i++) { 
-				$objet = new filmC($tabquery[$i]['nom_film'], $tabquery[$i]['annee'], $tabquery[$i]['score'], $tabquery[$i]['nbVotants'], $tabquery[$i]['idFilm']);
+			if (count($tabquery) > 0) {
+				for ($i=0; $i < count($tabquery); $i++) { 
+					$objet[$i] = new filmC($tabquery[$i]['nom_film'], $tabquery[$i]['annee'], $tabquery[$i]['score'], $tabquery[$i]['nbVotants'], $tabquery[$i]['id']);
+				}
+				return $objet;
+			} else {
+				return false;
 			}
-			return $query;
+			
 		}
 
 		public function ajout_vote($idfilm){

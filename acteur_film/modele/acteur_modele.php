@@ -43,11 +43,17 @@
             $i = 0;
             $query = $this->bdd->prepare('SELECT * FROM acteur a INNER JOIN casting c ON c.acteur_id = a.id_acteur where film_id = ?');
             $query->execute(array($id));
-            foreach ($query as $res){
-                $objet[$i] = new ActeurC($res['nom_acteur'], $res['prenom_acteur'], $res['idActeur']);
-                $i = $i + 1;
+            $tabquery = $query->fetchall();
+            if (count($tabquery) > 0) {
+                foreach ($tabquery as $res){
+                    $objet[$i] = new ActeurC($res['nom_acteur'], $res['prenom_acteur'], $res['id_acteur']);
+                    $i = $i + 1;
+                }
+                return $objet;
+            } else {
+                return false;
             }
-            return $objet;
+            
             
 			
 		}
