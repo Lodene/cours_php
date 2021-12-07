@@ -28,8 +28,10 @@
                 if ($acteurobjet != false){
                     for ($p=0; $p < count($acteurobjet); $p++) { 
                         $a++;
+                        ?><strong><?php
                         echo $acteurobjet[$p]->getnom_acteur();
                         echo $acteurobjet[$p]->getprenom_acteur();
+                        ?></strong><?php
                         echo "<br>";
                     }
                 }
