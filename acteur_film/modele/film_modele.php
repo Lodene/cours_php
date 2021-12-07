@@ -48,12 +48,11 @@
 		public function ajout_vote($idfilm){
 			$query = $this->bdd->prepare("SELECT * FROM film WHERE id=:id");
     		$query -> execute(array(':id' => $idfilm));
-			
-    		foreach ($query->fetchAll() as $tf) {
-    			$nbvotants = $tf['nbVotants'] + 1;
-    		}
-
-		    $nbvotant = $this->bdd->prepare("UPDATE film SET nbVotants = $nbvotants WHERE id=:id");
+			$query = $query->fetchAll();
+			$objet = new filmC($query[0]['nom_film'], $query[0]['annee'], $query[0]['score'], $query[0]['nbVotants']);
+			var_dump($objet);
+			$newNbVotants = $objet->getNbVotants() + 1;
+		    $nbvotant = $this->bdd->prepare("UPDATE film SET nbVotants = $newNbVotants WHERE id=:id");
 		    $nbvotant -> execute(array(':id' => $idfilm));
 		}
     }

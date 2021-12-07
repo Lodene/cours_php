@@ -42,10 +42,6 @@
 			}
 		}
 
-		public function co_deco($todo){
-			
-		}
-
 		public function verif_mdp($mdp){
 			$majuscule = preg_match('@[A-Z]@', $mdp);
 			$minuscule = preg_match('@[a-z]@', $mdp);
