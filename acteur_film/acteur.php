@@ -4,28 +4,24 @@
     <a href="ajoutacteur.php">Ajouter un acteur</a> </p> 
     <a href="accueil.php">Revenir a la page d'accueil</a> <br /> <br />
 <?php
-    $query = $Mfilm->film_casting();
-    $br = $query->fetchAll();
+        $objet = $Macteur->acteur();
 
-    $toutquery = $Macteur->acteur();
-    $br2 = $toutquery->fetchAll();
-
-    foreach ($br2 as $tf) {
+    for ($i=0; $i < count($objet); $i++) { 
         $a = 0;
-        ?> <strong> <?php
-        echo $tf['nom_acteur']. " ";
-        echo $tf['prenom_acteur'] . ", ";
-        ?> </strong> <?php
-        $a = 0;
-        foreach($br as $f){
-            if($tf['id_acteur'] == $f['acteur_id']){
-                $a++;
-                echo $f['nom_film']. " ";
-            } 
-        }
-        if ($a == 0) {
-            echo "Pas de film";
+        echo $objet[$i]->getnom_acteur();
+        echo $objet[$i]->getprenom_acteur();
+        echo '<br>';
+        $filmobjet = $Mfilm->film_casting($objet[$i]->getidActeur());
+        if ($filmobjet != false){
+            for ($p=0; $p < count($acteurobjet); $p++) { 
+                ?><strong><?php
+                echo $filmobjet[$p]->getNom_film();
+                ?></strong><?php
+                echo "<br>";
+            }
+        } else {
+            echo "Pas d'acteur <br>";
         }
         echo "<br>";
-    }    
+    }
 ?>

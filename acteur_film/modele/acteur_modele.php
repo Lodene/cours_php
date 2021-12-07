@@ -31,7 +31,7 @@
             $tabquery = $query->fetchall();
             if (count($tabquery) > 0){
                 for ($i=0; $i < count($tabquery); $i++) { 
-                    $objet[$i] = new acteurC($tabquery[$i]['nom_acteur'], $tabquery[$i]['prenom_acteur']);
+                    $objet[$i] = new acteurC($tabquery[$i]['nom_acteur'], $tabquery[$i]['prenom_acteur'], $tabquery[$i]['id_acteur']);
                 }
                 return $objet; 
             }
@@ -43,9 +43,8 @@
             $i = 0;
             $query = $this->bdd->prepare('SELECT * FROM acteur a INNER JOIN casting c ON c.acteur_id = a.id_acteur where film_id = ?');
             $query->execute(array($id));
-            $objet = array();
             foreach ($query as $res){
-                $objet[$i] = new ActeurC($res['nom_acteur'], $res['prenom_acteur']);
+                $objet[$i] = new ActeurC($res['nom_acteur'], $res['prenom_acteur'], $res['idActeur']);
                 $i = $i + 1;
             }
             return $objet;
@@ -56,7 +55,11 @@
         public function acteur(){
 			$query = $this->bdd->prepare('SELECT * FROM acteur');
 			$query -> execute();
-			return $query;
+            $tabquery = $query->fetchall();
+            for ($i=0; $i < count($tabquery); $i++) { 
+				$objet[$i] = new acteurC($tabquery[$i]['nom_acteur'], $tabquery[$i]['prenom_acteur'], $tabquery[$i]['id_acteur']);
+			}
+			return $objet;
 		}
 
     }

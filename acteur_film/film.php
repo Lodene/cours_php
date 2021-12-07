@@ -21,21 +21,18 @@
         $objet = $Mfilm->film();
 
         for ($i=0; $i < count($objet); $i++) {
-            $a = 0;
             ?>
                 <a href="detailfilm.php?id=<?php  echo $objet[$i]->getId_Film();?>"> <?php echo $objet[$i]->getNom_film() . "<br>"?></a><?php
                 $acteurobjet = $Macteur->participer($objet[$i]->getId_Film());
                 if ($acteurobjet != false){
                     for ($p=0; $p < count($acteurobjet); $p++) { 
-                        $a++;
                         ?><strong><?php
                         echo $acteurobjet[$p]->getnom_acteur();
                         echo $acteurobjet[$p]->getprenom_acteur();
                         ?></strong><?php
                         echo "<br>";
                     }
-                }
-                if($a == 0){
+                } else {
                     echo "Pas d'acteur <br>";
                 }
                 echo "<br>";
