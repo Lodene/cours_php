@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 06 déc. 2021 à 20:17
+-- Généré le : mar. 07 déc. 2021 à 12:55
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.11
 
@@ -91,9 +91,9 @@ CREATE TABLE `film` (
 --
 
 INSERT INTO `film` (`id`, `nom_film`, `annee`, `score`, `nbVotants`) VALUES
-(1, 'Star Wars', 1977, 8.9, 14205),
+(1, 'Star Wars', 1977, 8.9, 14211),
 (2, 'Pulp Fiction', 1994, 8.4, 11694),
-(3, 'Blade Runner', 1982, 8.6, 8672),
+(3, 'Blade Runner', 1982, 8.6, 8678),
 (4, 'Titanic', 1997, 9.2, 8132),
 (5, 'Braveheart', 1995, 8.4, 8074),
 (6, 'Empire Strikes Back, The', 1980, 8.5, 8050),
@@ -103,7 +103,7 @@ INSERT INTO `film` (`id`, `nom_film`, `annee`, `score`, `nbVotants`) VALUES
 (10, 'Raiders of the Lost Ark', 1981, 8.4, 6488),
 (11, '2001: A Space Odyssey', 1968, 8.4, 6435),
 (12, 'Forrest Gump', 1994, 7.8, 6269),
-(13, 'Alien', 1986, 8.3, 5812),
+(13, 'Alien', 1986, 8.3, 5816),
 (14, 'Silence of the Lambs, The', 1991, 8.3, 5715),
 (15, 'Princess Bride, The', 1987, 8.4, 5522),
 (16, 'Terminator 2: Judgment Day', 1991, 8, 5513),
@@ -144,15 +144,9 @@ INSERT INTO `film` (`id`, `nom_film`, `annee`, `score`, `nbVotants`) VALUES
 (1551, 'Raw Deal', 1986, 5, 215),
 (1622, 'Batman and Robin', 1997, 3.9, 1925),
 (1623, 'damn', 911, 69, 420),
-(1626, 'alan la pute du 92', 1900, 2e22, 2147483647),
-(1627, 'alan la pute du 92', 1900, 2e22, 2147483647),
-(1628, 'alan la pute du 92', 1900, 2e22, 2147483647),
-(1629, 'alan la pute du 92', 1900, 2e22, 2147483647),
-(1630, 'alan la pute du 92', 1900, 2e22, 2147483647),
-(1631, 'salut', 99, 99, 99),
-(1632, 'alan va en espagne', 2021, 255, 214),
 (1633, 'les bronzés aux soleil', 1990, 258, 987),
-(1634, 'wuwu', 789, 456, 123);
+(1634, 'wuwu', 789, 456, 123),
+(1635, 'uwuuuw', 987, 654, 321);
 
 -- --------------------------------------------------------
 
@@ -220,7 +214,7 @@ ALTER TABLE `acteur`
 -- AUTO_INCREMENT pour la table `film`
 --
 ALTER TABLE `film`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1635;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1636;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
