@@ -1,8 +1,14 @@
 <?php 
     include("modele/copie.php");
 ?>
-    <a href="ajoutacteur.php">Ajouter un acteur</a> </p> 
-    <a href="accueil.php">Revenir a la page d'accueil</a> <br /> <br />
+<a href="accueil.php">Revenir a la page d'accueil</a> <br /> <br />
+<?php
+    if ($_SESSION['type'] == 'admin'){
+        echo "<a href='ajoutacteur.php'>Ajouter un acteur</a> </p></br></br></br>";
+    } 
+?>
+    
+    
 <?php
         $objet = $Macteur->acteur();
 
