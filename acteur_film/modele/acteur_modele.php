@@ -7,9 +7,9 @@
             $query->execute(array('nom' => $objet->getnom_acteur(), 'prenom' => $objet->getprenom_acteur()));
             $count = $query->rowCount();
             if($count == 0){
-                $query = $this->bdd->prepare("INSERT into `acteur` (nom_acteur, prenom_acteur)
-                                VALUES (:nom, :prenom)");
-                $query->execute(array(':nom' => $objet->getnom_acteur(), ':prenom' => $objet->getprenom_acteur()));
+                $query = $this->bdd->prepare("INSERT into `acteur` (id_acteur, nom_acteur, prenom_acteur)
+                                VALUES (:id_acteur, :nom, :prenom)");
+                $query->execute(array(':id_acteur' => '', ':nom' => $objet->getnom_acteur(), ':prenom' => $objet->getprenom_acteur()));
                 return true;
             } else {
             	return false;

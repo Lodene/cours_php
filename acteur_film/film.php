@@ -9,13 +9,10 @@
 </head>
 <body>
     <?php 
+    echo "<a href='accueil.php'>Revenir a la page d'accueil</a> <br />";
     if (isset($_SESSION['type'])){
         if ($_SESSION['type'] == 'admin'){
-            echo "<a href='accueil.php'>Revenir a la page d'accueil</a> <br />";
             echo "<p><a href='ajoutfilm.php'>Ajouter un film</a>  </br></br></br>";
-           
-        } else {
-            echo "<a href='accueil.php'>Revenir a la page d'accueil</a> <br /> <br />";
         } 
     }        
         $objet = $Mfilm->film();

@@ -17,7 +17,6 @@
     <a href="login.php">Se connecter</a>
     <?php 
         if (!empty($_POST['mdp']) AND isset($_POST['pseudo'])){
-            echo $_POST["mdp"] . "<br><br>";
             $objet = new userC('user', $_POST['pseudo'], $_POST["mdp"]);
             $test = $Muser->creercompte($objet);
             if ($test == 0){

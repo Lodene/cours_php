@@ -11,9 +11,9 @@
     
     <form action="" method="get">
             Nom film :  <input type="text" name="nom" />
-            annee :  <input type="text" name="annee" />
-            score :  <input type="text" name="score" />
-            nbvotants :  <input type="text" name="nbvotants" />
+            annee :  <input type="number" name="annee" />
+            score :  <input type="number" name="score" />
+            nbvotants :  <input type="number" name="nbvotants" />
             <input type="submit" name="submit" />   
     </form>
 
