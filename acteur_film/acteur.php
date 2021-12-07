@@ -11,15 +11,12 @@
     
 <?php
         $objet = $Macteur->acteur();
-
     for ($i=0; $i < count($objet); $i++) { 
-        $a = 0;
-        echo $objet[$i]->getnom_acteur();
+        echo $objet[$i]->getnom_acteur() . " ";
         echo $objet[$i]->getprenom_acteur();
-        echo '<br>';
+        echo "<br>";
         $filmobjet = $Mfilm->film_casting($objet[$i]->getidActeur());
         if ($filmobjet != false){
-           
             for ($p=0; $p < count($filmobjet); $p++) { 
                 ?><strong><?php
                 echo $filmobjet[$p]->getNom_film();

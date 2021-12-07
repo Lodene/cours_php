@@ -45,7 +45,7 @@
 
         public function film_casting($id){
 			$query = $this->bdd->prepare('SELECT * FROM film f
-      										INNER JOIN casting c ON c.acteur_id = f.id where acteur_id = :id');
+      										INNER JOIN casting c ON c.film_id = f.id where acteur_id = :id');
 			$query -> execute(array(':id' => $id));
 			$tabquery = $query->fetchall();
 			if (count($tabquery) > 0) {
